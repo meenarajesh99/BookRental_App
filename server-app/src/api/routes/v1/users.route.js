@@ -3,7 +3,7 @@ dotenv.config();
 const jwt = require('jsonwebtoken')
 const express = require('express');
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 /** Source code imports */
 // Mongoose models
@@ -16,7 +16,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-  console.log(process.env)
+  
   User
     // Calling .find() on a model w/out any arguments gets all documents for that collection : )
     .find()     
@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
 /*************************************************************************************** */
 //creating a new user with username in the body
 
-/* router.post('/', async(req, res) => {
+router.post('/', async(req, res) => {
   const body = req.body
   const saltRounds = 10
   bcrypt.hash(body.password, saltRounds,(err,passwordHash)=>{
@@ -73,14 +73,17 @@ router.get('/', (req, res) => {
     .then(() => res.send(`${JSON.stringify(req.body)} User created!`))
     // Error handling
     .catch(error => res.send(`ERROR: Unable to create ${JSON.stringify(req.body)} User. Err is ${JSON.stringify(error)}`))
-  })}) */
+  })})
 
   /****************************************************************************************** */
   //creating a new user or checking a user to confirm the hashed password 
   router.post('/auth/login', async(req, res) => 
      {
+      const body = req.body
       const username = req.body.username
       const password=req.body.password
+      
+      console.log(username)
       const formatItems = items => items.map(item => ({ username: item.username, email: item.email }));
       
       const user = await User.findOne({username:username})
@@ -102,7 +105,7 @@ router.get('/', (req, res) => {
         
       }
    //   console.log(process.env.SECRET)
-      const token = jwt.sign(userForToken,process.env.SECRET);
+      const token = jwt.sign(userForToken,'sunnyside');
     //  console.log(token);
 
     res
