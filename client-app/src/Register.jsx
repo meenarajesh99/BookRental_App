@@ -32,31 +32,31 @@ function Login(props){
 
     return(
 
-    <div>
+      <div>
       <div className="container">
         <div className="small-container">
 <Form>
 
-      <h1>Login</h1>
+      <h1>Register</h1>
       <br/><br/><br/><br/>
-    <Form.Group className="mb-3" controlId="formUserName">
-      <Form.Label>User Name</Form.Label>
-      <Form.Control type="text" placeholder="Enter username" onChange={e => setUserName(e.target.value)}/>
-      <br/>
-    </Form.Group>
+  <Form.Group className="mb-3" controlId="formUserName">
+    <Form.Label>User Name</Form.Label>
+    <Form.Control type="text" placeholder="Enter username" onChange={e => setUserName(e.target.value)}/>
     <br/>
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password" onChange ={e => setPassword(e.target.value)} />
-    </Form.Group>
-    <br/><br/>
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Remember me" />
-    </Form.Group>
-    <br/><br/>
-    <Button variant="primary" type="submit" onClick={handleSubmit}>
-      Submit
-    </Button>
+  </Form.Group>
+  <br/>
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" onChange ={e => setPassword(e.target.value)} />
+  </Form.Group>
+  <br/><br/>
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    
+  </Form.Group>
+  <br/><br/>
+  <Button variant="primary" type="submit" onClick={handleSubmit}>
+    Submit
+  </Button>
   </Form>
   </div>
 </div>

@@ -2,26 +2,33 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
-import React from 'react';
-import Header from './components/Header/Header';
+//mport React from 'react';
+import Header from './Components/Header'
+import Footer from './Components/Footer';
+import { StyledLink } from "./styles";
 // Source code imports
-import ItemsList from "./ItemsList";
-import SelectedItems from "./SelectedItems";
+import   "./SelectedItems";
+import Register from './Register';
+import React,{Component} from 'react';
 import Login from './Login';
+import Profile from './Profile';
+import Home from "./Components/Home";
+import  "./BookData"; 
+import Books from './Books';
+import "./ItemsList";
 
-// Our raw data. In a real app we might get this via an API call instead of it being hardcoded.
 const TYPE_NAMES = {
-  fruits: "fruit",
-  vegetables: "vegetable",
+  fiction: "fiction",
+  nonfiction: "nonfiction",
 };
 
 function App(props) {
   // create the react component state we'll use to store our data
-  const [items, setItems] = useState([]);
+ const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:9999/v1/users")
+      .get("http://localhost:9999/v1/books")
       // handle success
       .then((response) => {
         const data = response.data;
@@ -33,6 +40,13 @@ function App(props) {
         setItems(parsedData);
       });
   }, []);
+
+    const [optionValue, setOptionValue] = useState("");
+    const handleSelect = (e) => {
+      console.log(e.target.value);
+      setOptionValue(e.target.value);
+    };
+  
 
   const updateItem = (itemName) => {
     console.log("updateItem for ", itemName);
@@ -48,7 +62,9 @@ function App(props) {
           // This could also be done as `return { ...item, checked: !item.checked }`
           const newItem = {
             name: item.name,
+            author: item.author,
             type: item.type,
+            price: item.price,
             checked: !item.checked,
           };
 
@@ -69,41 +85,46 @@ function App(props) {
     return <div>Loading</div>;
   } else {
     return (
-      <Router>
-        <div className="App">
-          <h1>Book Store Rental App</h1>
-          <div>
+      <div className = "App">
+        <div>
             <Header/>
-          </div>
-          <div>
-            <Link to="/login">User Login</Link>
-          </div>
-          <div>
-            <Link to="/">Selected Books</Link>
-          </div>
-          <div>
-            <Link to="fruit">Fruits</Link>
-          </div>
-          <div>
-            <Link to="vegetable">Vegetables</Link>
-          </div>
+          </div>  
+        <Router>
+          <nav>
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/Login">Login</StyledLink>
+            <StyledLink to="/Register">Register</StyledLink>
+            <StyledLink to="/Profile">Profile</StyledLink>
+            <StyledLink to="/Fiction">Fiction</StyledLink>
+            <StyledLink to="/NonFiction">NonFiction</StyledLink>
+           {/*  <StyledLink to="/NonFiction">NonFiction</StyledLink> */}
+          </nav>
+          <Switch>
+            <Route exact path="/">
+              <Home/>
+              </Route>
+              <Route exact path="/register">
+              <Register/>
+              </Route>
+              <Route exact path="/login">
+              <Login/>
+              </Route>
+              <Route exact path="/profile">
+              <Profile/>
+              </Route>
+              <Route exact path="/fiction">
+              <Fiction/>
+              </Route>
+              <Route exact path="/nonfiction">
+              <NonFiction/>
+              </Route>
+                        
+          </Switch>
+        </Router>
         </div>
-        <Switch>
-          <Route path="/fruit">
-            <ItemsList items={items} type="fruit" updateItem={updateItem} />
-          </Route>
-          <Route path="/vegetable">
-            <ItemsList items={items} type="vegetable" updateItem={updateItem} />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/">
-            <SelectedItems items={items} />
-          </Route>
-        </Switch>
-      </Router>
-    );
+    )
+      
+    
   }
 }
 
