@@ -1,3 +1,5 @@
+const { getMaxListeners } = require("../../api/models/book")
+
 const BOOKS = [
 {
     
@@ -82,3 +84,4 @@ const BOOKS = [
     
 }
 ]
+module.exports = BOOKS;

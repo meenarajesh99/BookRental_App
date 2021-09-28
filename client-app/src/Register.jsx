@@ -3,13 +3,14 @@ import { Button } from 'react-bootstrap';
 import {useState} from "react"
 
 
-function Login(props){
+function Register(props){
 
     const[username, setUserName] = useState();
     const[password, setPassword] = useState();
+    const[email, setEmail] = useState();
 
-    async function CheckUser(credentials){
-        return fetch('http://localhost:9999/v1/users/auth/login', {
+    async function RegisterUser(credentials){
+        return fetch('http://localhost:9999/v1/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,9 +22,10 @@ function Login(props){
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await CheckUser({
+        const token = await RegisterUser({
             username,
-            password
+            password,
+            email
         });
         console.log(token)
         sessionStorage.setItem('token', JSON.stringify(token));
@@ -50,6 +52,12 @@ function Login(props){
     <Form.Control type="password" placeholder="Password" onChange ={e => setPassword(e.target.value)} />
   </Form.Group>
   <br/><br/>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+  <Form.Label>Email</Form.Label>
+    <Form.Control type="password" placeholder="Email" onChange ={e => setPassword(e.target.value)} />
+    
+  </Form.Group>
+  <br/><br/>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     
   </Form.Group>
@@ -63,5 +71,5 @@ function Login(props){
 </div>
 )}
 
-export default Login;
+export default Register;
     

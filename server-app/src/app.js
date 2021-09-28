@@ -9,6 +9,7 @@ dotenv.config();
 /** Source code imports */
 // Mongoose models
 const User = require('./api/models/user');
+const Book = require('./api/models/book');
 
 //const UserModel = require('./api/models/user')
 
@@ -17,6 +18,8 @@ const routes = require('./api/routes/v1');
 
 // Miscellaneos
 const USERS = require('./test/data/users');
+
+const BOOKS = require('./test/data/books');
 
 var cors = require('cors');
 
@@ -58,7 +61,15 @@ USERS.forEach(item => {
     })
 });
 
-
+BOOKS.forEach(item => {
+  const itemModel = new Book({ name: item.name, author: item.author, type: item.type, price: item.price});
+ 
+  itemModel
+    .save() 
+    .catch(error => {
+      console.log(`MongoDB: Error on save: `, error.errmsg);
+    })
+});
 // express server config
 const PORT = 9999;
 

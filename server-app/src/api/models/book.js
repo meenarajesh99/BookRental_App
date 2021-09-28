@@ -18,12 +18,13 @@ const bookSchema = new mongoose.Schema({
       type: String,
       required: true,
   },
-  type: String,
+  
   price: {
       type: Number,
       required: true,
 
-  }
+  },
+  type: String
 });
 
 const Book = mongoose.model('Book', bookSchema);

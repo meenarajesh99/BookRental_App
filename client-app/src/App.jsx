@@ -5,6 +5,8 @@ import axios from "axios";
 //mport React from 'react';
 import Header from './Components/Header'
 import Footer from './Components/Footer';
+import Home from "./Components/Home";
+
 import { StyledLink } from "./styles";
 // Source code imports
 import   "./SelectedItems";
@@ -12,10 +14,11 @@ import Register from './Register';
 import React,{Component} from 'react';
 import Login from './Login';
 import Profile from './Profile';
-import Home from "./Components/Home";
-import  "./BookData"; 
-import Books from './Books';
-import "./ItemsList";
+
+import Fiction from "./Fiction";
+import NonFiction from "./Nonfiction";
+import ItemsList from "./ItemsList";
+import SelectedItems from "./SelectedItems";
 
 const TYPE_NAMES = {
   fiction: "fiction",
@@ -41,12 +44,12 @@ function App(props) {
       });
   }, []);
 
-    const [optionValue, setOptionValue] = useState("");
+   /*  const [optionValue, setOptionValue] = useState("");
     const handleSelect = (e) => {
       console.log(e.target.value);
       setOptionValue(e.target.value);
     };
-  
+   */
 
   const updateItem = (itemName) => {
     console.log("updateItem for ", itemName);
@@ -97,6 +100,7 @@ function App(props) {
             <StyledLink to="/Profile">Profile</StyledLink>
             <StyledLink to="/Fiction">Fiction</StyledLink>
             <StyledLink to="/NonFiction">NonFiction</StyledLink>
+            <StyledLink to="/SelectedItems">SelectedItems</StyledLink>
            {/*  <StyledLink to="/NonFiction">NonFiction</StyledLink> */}
           </nav>
           <Switch>
@@ -112,11 +116,14 @@ function App(props) {
               <Route exact path="/profile">
               <Profile/>
               </Route>
-              <Route exact path="/fiction">
-              <Fiction/>
+              <Route path="/fiction">
+              <ItemsList items={items} type="fiction" updateItem={updateItem} />
               </Route>
-              <Route exact path="/nonfiction">
-              <NonFiction/>
+              <Route path="/nonfiction">
+               <ItemsList items={items} type="nonfiction" updateItem={updateItem} />
+              </Route>
+              <Route path="/selecteditems">
+              <SelectedItems items={items} />
               </Route>
                         
           </Switch>

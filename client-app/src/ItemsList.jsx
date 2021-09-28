@@ -11,8 +11,9 @@ function ItemsList({ items, type, updateItem }) {
   console.log(filteredItems);
 
   return (
-    <div>
-      {type} List
+    <div className="bookclass">
+      <div className="subtitles">
+      {type} Books
       <ul>
         {filteredItems.map((item, index) => (
           <div key={type + "-" + index}>
@@ -20,6 +21,7 @@ function ItemsList({ items, type, updateItem }) {
           </div>
         ))}
       </ul>
+      </div>
     </div>
   );
 }

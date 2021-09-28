@@ -1,7 +1,9 @@
 function Fiction() {
     return (
-      <div>
-        Fiction Books
+      <div className="container">
+        <div className="fictionclass">
+        <h3>Fiction Books</h3>
+      </div>
       </div>
     )
   
