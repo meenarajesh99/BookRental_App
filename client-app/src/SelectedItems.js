@@ -5,11 +5,13 @@ import { Button } from 'react-bootstrap';
 function SelectedItems({ items }) {
   var total=0;
   const itemsSelected = items.filter(item => item.checked === true);
-  itemsSelected.forEach(item =>total+=item.price);
+   itemsSelected.forEach(item =>total+=item.price);
   
    const handleSubmit = async e => {
     e.preventDefault();
    }
+
+ 
     
   return (
     <div className="bookclass">

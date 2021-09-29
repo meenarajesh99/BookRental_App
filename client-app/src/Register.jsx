@@ -68,6 +68,7 @@ function Register(props){
   <Button variant="primary" type="submit" onClick={handleSubmit}>
     Submit
   </Button>
+  <p>Registration success!</p>
   </Form>
   </div>
 </div>

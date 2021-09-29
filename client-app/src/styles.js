@@ -15,3 +15,4 @@ export const StyledLink = styled(Link)`
     text-decoration: underline;
   }
 `;
+export default styled;

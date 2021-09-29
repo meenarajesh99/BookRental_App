@@ -93,7 +93,7 @@ function App(props) {
             <Header/>
           </div>  
         <Router>
-          <nav>
+          <nav className = "navbar">
             <StyledLink to="/">Home</StyledLink>
             <StyledLink to="/Login">Login</StyledLink>
             <StyledLink to="/Register">Register</StyledLink>
