@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import {useState} from "react"
 
 
+
 function Register(props){
 
     const[username, setUserName] = useState();
@@ -10,7 +11,7 @@ function Register(props){
     const[email, setEmail] = useState();
 
     async function RegisterUser(credentials){
-        return fetch('http://localhost:9999/v1/users', {
+        return fetch('http://localhost:9999/v1/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,6 +19,8 @@ function Register(props){
             body: JSON.stringify(credentials)
         })
         .then(data => data.json())
+        .catch(error => {
+          console.error('Error:', error)});
     }
 
     const handleSubmit = async e => {
@@ -28,7 +31,7 @@ function Register(props){
             email
         });
         console.log(token)
-        sessionStorage.setItem('token', JSON.stringify(token));
+//        sessionStorage.setItem('token', JSON.stringify(token));
 //        props.setToken(token);
     }
 
@@ -54,7 +57,7 @@ function Register(props){
   <br/><br/>
   <Form.Group className="mb-3" controlId="formBasicEmail">
   <Form.Label>Email</Form.Label>
-    <Form.Control type="password" placeholder="Email" onChange ={e => setPassword(e.target.value)} />
+    <Form.Control type="password" placeholder="Email" onChange ={e => setEmail(e.target.value)} />
     
   </Form.Group>
   <br/><br/>

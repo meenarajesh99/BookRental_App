@@ -1,7 +1,7 @@
 function Fiction() {
     return (
-      <div className="container">
-        <div className="fictionclass">
+      <div className="bookclass">
+      <div className="subtitles">
         <h3>Fiction Books</h3>
       </div>
       </div>

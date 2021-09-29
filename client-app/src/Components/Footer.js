@@ -3,7 +3,7 @@ import React from 'react';
 function Footer(){
     return(
         <div className="footer">
-            <p>&copy 2021 My Book Store</p>
+            <h3>&#169 2021 My Book Store</h3>
         </div>
     )
 }

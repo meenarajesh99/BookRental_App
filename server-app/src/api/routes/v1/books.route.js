@@ -43,7 +43,8 @@ const router = express.Router();
   })
 
   router.get('/:name', (req, res) => {
-    const name = req.params.type;
+    const name = req.params.name;
+    console.log(name)
     const formatItems = items => items.map(item => ({ name: item.name, author: item.author, type: item.type, price: item.price}))
     // if(name) {
       Book
@@ -53,7 +54,7 @@ const router = express.Router();
         })
         // Error handling
         .catch(error => res.send(`Error - ${JSON.stringify(error)}`));
-//    }
+
   })
 
 router.post('/', (req, res) => {

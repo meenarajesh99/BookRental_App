@@ -100,7 +100,7 @@ function App(props) {
             <StyledLink to="/Profile">Profile</StyledLink>
             <StyledLink to="/Fiction">Fiction</StyledLink>
             <StyledLink to="/NonFiction">NonFiction</StyledLink>
-            <StyledLink to="/SelectedItems">SelectedItems</StyledLink>
+            <StyledLink to="/SelectedItems">Cart</StyledLink>
            {/*  <StyledLink to="/NonFiction">NonFiction</StyledLink> */}
           </nav>
           <Switch>

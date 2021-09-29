@@ -1,8 +1,9 @@
 .App {
   text-align: center;
   background-image: "url(" + "bookstore.jpg" + ")";
-  height: 500px;
+  height: 800px;
   background-size: cover;
+  
 }
 
 .hv-center {

@@ -62,8 +62,9 @@ router.get('/:username', (req, res) => {
 /*************************************************************************************** */
 //creating a new user with username in the body
 
-/* router.post('/', async(req, res) => {
+router.post('/', async(req, res) => {
   const body = req.body
+  console.log(body.username);
   const saltRounds = 10
   bcrypt.hash(body.password, saltRounds,(err,passwordHash)=>{
   // create mongoose GroceryItem model instance. we can then save this to mongodb as a document
@@ -74,7 +75,7 @@ router.get('/:username', (req, res) => {
     // Error handling
     .catch(error => res.send(`ERROR: Unable to create ${JSON.stringify(req.body)} User. Err is ${JSON.stringify(error)}`))
   })})
- */
+
   /****************************************************************************************** */
   //creating a new user or checking a user to confirm the hashed password 
   router.post('/auth/login', async(req, res) => 
