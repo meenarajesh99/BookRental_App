@@ -104,7 +104,7 @@ function App(props) {
             <StyledLink to="/Fiction">Fiction</StyledLink>
             <StyledLink to="/NonFiction">NonFiction</StyledLink>
             <StyledLink to="/SelectedItems">Cart</StyledLink>
-           {/*  <StyledLink to="/NonFiction">NonFiction</StyledLink> */}
+          
           </nav>
           <Switch>
             <Route exact path="/">

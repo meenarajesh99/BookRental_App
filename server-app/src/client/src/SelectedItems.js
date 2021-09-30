@@ -20,7 +20,7 @@ function SelectedItems({ items }) {
     <ul>
      {itemsSelected.map(item => <li>{item.name} ( {item.author}) = ${item.price}</li>)}   
     </ul>
-    <p>Total Price:{total}</p>
+    <p>Total Price:${total}</p>
     <Form>
      <Button variant="primary" type="submit" onClick={handleSubmit}>
       Checkout

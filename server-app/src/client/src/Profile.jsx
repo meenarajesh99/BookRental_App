@@ -33,7 +33,7 @@ function Profile({username}) {
   },[])
 
   async function DeleteUser() {
-    return fetch(`http://localhost:9999/v1/usergroup/${username}`, {
+    return fetch(`http://localhost:9999/v1/users/${username}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -81,16 +81,22 @@ function Profile({username}) {
   <Form>
   
         <h1>Profile</h1>
-        <br/><br/><br/><br/>
+       
             <Form.Group className="mb-3" controlId="formUserName">
               <Form.Label>User Name</Form.Label>
               <Form.Control type="text" placeholder="Enter username" />
-              <br/>
+              <p></p>
             </Form.Group>
-              <br/>
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Enter new password" onChange={e=> setPassword(e.target.value)}/>
+              <br></br>
+              </Form.Group>
             <Button variant="primary" type="submit" name="view profile" onClick={handleUser}>UpdatePassword</Button>
-            <Form.Control type="text" placeholder="Enter new password" onChange={e=> setPassword(e.target.value)}/>
-            <br/>
+            <p></p>
+            
+           
+            <p></p>
             <Button variant="primary" type="submit" name="delete profile" onClick={DeleteUser}>
               Delete Account
           </Button>

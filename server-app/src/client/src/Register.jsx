@@ -9,6 +9,7 @@ function Register(props){
     const[username, setUserName] = useState();
     const[password, setPassword] = useState();
     const[email, setEmail] = useState();
+    const[success, setSuccess] = useState(false);
 
     async function RegisterUser(credentials){
         return fetch('http://localhost:9999/v1/users/', {
@@ -18,7 +19,14 @@ function Register(props){
             },
             body: JSON.stringify(credentials)
         })
-        .then(data => data.json())
+        .then(data => {
+          data.json()
+        console.log(data)
+        if(data)
+        {
+        setSuccess(true)
+        }
+      })
         .catch(error => {
           console.error('Error:', error)});
     }
@@ -31,12 +39,10 @@ function Register(props){
             email
         });
         console.log(token)
-//        sessionStorage.setItem('token', JSON.stringify(token));
-//        props.setToken(token);
-    }
+      }
+
 
     return(
-
       <div>
       <div className="container">
         <div className="small-container">
@@ -54,7 +60,7 @@ function Register(props){
     <Form.Label>Password</Form.Label>
     <Form.Control type="password" placeholder="Password" onChange ={e => setPassword(e.target.value)} />
   </Form.Group>
-  <br/><br/>
+  <br/>
   <Form.Group className="mb-3" controlId="formBasicEmail">
   <Form.Label>Email</Form.Label>
     <Form.Control type="password" placeholder="Email" onChange ={e => setEmail(e.target.value)} />
@@ -62,18 +68,18 @@ function Register(props){
   </Form.Group>
   <br/><br/>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    
   </Form.Group>
-  <br/><br/>
+  <Form.Group>
+    <Form.Label>{success ? `Registration Succesful:${success.toString()}`:null}</Form.Label>
+      </Form.Group>
+  
   <Button variant="primary" type="submit" onClick={handleSubmit}>
-    Submit
+    Register
   </Button>
-  <p>Registration success!</p>
   </Form>
   </div>
+  </div>
 </div>
-</div>
-)}
+    )}
 
-export default Register;
-    
+export default Register;  

@@ -42,22 +42,6 @@ router.get('/:username', (req, res) => {
  
 
 })
-/********************************************************************************* */
-
-//creating a new user
-// router.post('/', (req, res) => {
-//   const body = req.body;
-
-//   // create mongoose user model instance. we can then save this to mongodb as a document
-//   const newItem = new User({ username: body.username, email: body.email, password: body.password });
-  
-//   // save to mongodb
-//   newItem
-//     .save()
-//     .then(() => res.send(`${JSON.stringify(req.body)} User created!`))
-//     // Error handling
-//     .catch(error => res.send(`ERROR: Undable to create ${JSON.stringify(req.body)} user. Err is ${JSON.stringify(error)}`));
-// }) 
 
 /*************************************************************************************** */
 //creating a new user with username in the body
@@ -118,26 +102,17 @@ router.post('/', async(req, res) => {
     
    /****************************************************************************************** */ 
   
-    // create mongoose user model instance. we can then save this to mongodb as a document
-  //   const newItem = new User({ username: body.username, email: body.email, password: body.password });
-    
-  //   // save to mongodb
-  //   newItem
-  //     .save()
-  //     .then(() => res.send(`${JSON.stringify(req.body)} User created!`))
-  //     // Error handling
-  //     .catch(error => res.send(`ERROR: Undable to create ${JSON.stringify(req.body)} user. Err is ${JSON.stringify(error)}`));
- //  }) 
- /********************************************************************************************** */ 
+   
 //creating a new user with username in the url,and username with password in the json body, password will be hashed in the DB
 
- /*  router.post('/:username', (req, res) => {
+  router.post('/:username', (req, res) => {
+    const username = req.params.username;
      const body = req.body
      console.log(body)
     const saltRounds = 10
     bcrypt.hash(body.password, saltRounds,(err,passwordHash)=>{
     
-        // create mongoose GroceryItem model instance. we can then save this to mongodb as a document
+        // create mongoose user model instance. we can then save this to mongodb as a document
      const newItem = new User({ username: body.username,  email: body.email,password: passwordHash })
     newItem
       .save()
@@ -146,10 +121,10 @@ router.post('/', async(req, res) => {
       .catch(error => res.send(`ERROR: Unable to create ${JSON.stringify(req.body)} User. Err is ${JSON.stringify(error)}`))  
       
     })});
- */
+
   /*********************************************************************************************** */
-//deleting a user
-/* router.delete('/:username', async(req, res, next) => {
+/* //deleting a user */
+ router.delete('/:username', async(req, res, next) => {
     const username = req.params.username
     try{
 
@@ -159,7 +134,8 @@ router.post('/', async(req, res) => {
     catch(err){
         console.log(err.message);
     }
-   */
+  })
+ 
  
 /**************************************************************************************************** */
   //updating the username
@@ -179,6 +155,6 @@ router.post('/', async(req, res) => {
      }
 })
 
-
+ 
 //});
 module.exports = router;
