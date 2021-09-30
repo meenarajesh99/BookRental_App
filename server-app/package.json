@@ -15,7 +15,7 @@
     "install-client": "cd src/client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start:dev": "nodemon src/app.js -q",
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
