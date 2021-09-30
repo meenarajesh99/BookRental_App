@@ -9,7 +9,7 @@
  
   "scripts": {
     "prestart": "npm docs",
-    "start": "node src/app.js",
+    "start": "node app.js",
     "start:dev": "nodemon src/app.js -q",
     "docs": "apidoc -i src -o docs",
     "test": "echo \"Error: no test specified\" && exit 1",
