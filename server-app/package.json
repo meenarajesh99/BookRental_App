@@ -1,6 +1,9 @@
 {
   "name": "capstone",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.17.5"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,12 +12,10 @@
     "start:dev": "nodemon src/app.js -q",
     "docs": "apidoc -i src -o docs",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
+    "build": "cd src/client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
-  
-   
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
@@ -31,6 +32,4 @@
   },
   "author": "",
   "license": "ISC"
-  
-  
 }

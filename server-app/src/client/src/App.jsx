@@ -30,11 +30,11 @@ function App(props) {
  const [items, setItems] = useState([]);
  const REACT_APP_API_HOST = process.env.REACT_APP_API_HOST;
 
- const API_BOOKS_ROUTE = `{REACT_APP_API_HOST}/v1/books`
+ const API_BOOKS_ROUTE = `${process.env.REACT_APP_API_HOST}/v1/books`
 
   useEffect(() => {
     axios
-      .get("API_BOOKS_ROUTE")
+      .get(API_BOOKS_ROUTE)
       // handle success
       .then((response) => {
         const data = response.data;

@@ -34,8 +34,10 @@ const DB_URL = process.env.DB_URL;
 
 /** Connect to our MongoDB database  
  **/
-
- mongoose.connect(process.env.DB_URL)
+console.log(process.env.DB_URL)
+console.log("Hello server")
+console.log(DB_URL)
+ mongoose.connect(DB_URL)
   .then(()=> console.log('Connected to MongoDB'))
 // Configure mongoose to tell us if we succeed or if we fail to connect to the database
 mongoose.connection.on('open', () => `MongoDB: Successfully connected to ${DB_URL}`);
@@ -83,7 +85,11 @@ const app = express();
 // this allows us to parse HTTP POST request bodies 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin:`http://localhost:3000`, //<-react app
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}));
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 
