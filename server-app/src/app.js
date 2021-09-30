@@ -130,6 +130,6 @@ app.get('*', (req, res) => {
 
 /** Start express server  */
 app.listen(PORT, () => {
-  console.log(`Example app listening `)
+  console.log(`Example app listening  at http://localhost:${PORT}`)
   /* at http://localhost:${PORT}*/
 })
