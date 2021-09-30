@@ -28,10 +28,13 @@ const TYPE_NAMES = {
 function App(props) {
   // create the react component state we'll use to store our data
  const [items, setItems] = useState([]);
+ const REACT_APP_API_HOST = process.env.REACT_APP_API_HOST;
+
+ const API_BOOKS_ROUTE = `{REACT_APP_API_HOST}/v1/books`
 
   useEffect(() => {
     axios
-      .get("http://localhost:9999/v1/books")
+      .get("API_BOOKS_ROUTE")
       // handle success
       .then((response) => {
         const data = response.data;

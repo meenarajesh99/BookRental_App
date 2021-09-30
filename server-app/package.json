@@ -8,18 +8,13 @@
     "start": "node src/app.js",
     "start:dev": "nodemon src/app.js -q",
     "docs": "apidoc -i src -o docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adamcee/capstone.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/adamcee/capstone/issues"
-  },
-  "homepage": "https://github.com/adamcee/capstone#readme",
+  
+   
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
@@ -33,5 +28,9 @@
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
     "apidoc": "^0.29.0"
-  }
+  },
+  "author": "",
+  "license": "ISC"
+  
+  
 }
