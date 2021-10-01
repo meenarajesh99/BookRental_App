@@ -3,23 +3,23 @@ const { getMaxListeners } = require("../../api/models/user")
 const USERS = [
     
     {
-        username: 'tomtom',
+        username: 'tomtom9',
         email: 'user22@gmail.com',
         password: 'password22',
     },
     
     {
-        username: 'spiderman',
+        username: 'spiderman9',
         email: 'user555@gmail.com',
         password: 'password555',
     },
     {
-        username: 'batman',
+        username: 'batman9',
         email: 'user678@gmail.com',
         password: 'password678',
     },
     {
-        username: 'santaclaus',
+        username: 'santaclaus9',
         email: 'user45@gmail.com',
         password: 'password45',
     },

@@ -55,9 +55,9 @@ console.log('MongoDB: Attempting to connect ...');
 
 // Create some test data in the database for our app
 USERS.forEach(item => {
-  const itemModel = new User({ username: item.username, email: item.email, password: item.password });
+  const userModel = new User({ username: item.username, email: item.email, password: item.password });
  
-  itemModel
+  userModel
     .save() 
     .catch(error => {
       console.log(`MongoDB: Error on save: `, error.errmsg);
@@ -65,9 +65,9 @@ USERS.forEach(item => {
 });
 
 BOOKS.forEach(item => {
-  const itemModel = new Book({ name: item.name, author: item.author, type: item.type, price: item.price});
+  const bookModel = new Book({ name: item.name, author: item.author, type: item.type, price: item.price});
  
-  itemModel
+  bookModel
     .save() 
     .catch(error => {
       console.log(`MongoDB: Error on save: `, error.errmsg);
