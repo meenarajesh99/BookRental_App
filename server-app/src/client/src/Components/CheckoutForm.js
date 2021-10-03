@@ -126,13 +126,7 @@ const CheckoutForm = ({total}) =>
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  // if(stripe !== null && elements !== null) {
-  //   console.log("stripe and elements not null");
-    
-  //   const element = elements.getElement(CardElement)
-
-  //   if(element !== null) {
-  //       console.log("element not null");
+  
   if (!stripe || !elements) {
     // Stripe.js has not loaded yet. Make sure to disable
     // form submission until Stripe.js has loaded.
@@ -234,7 +228,8 @@ return paymentMethod ? (
     <div className="AppWrapper">
       
       <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-    <SubmitButton processing={processing} error={error} disabled={!stripe}>
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
+    <SubmitButton processing={processing} error={error} disabled={!stripe} >
       Pay ${total}
     </SubmitButton>
     </Elements>

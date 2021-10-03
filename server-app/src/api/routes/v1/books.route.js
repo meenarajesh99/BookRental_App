@@ -106,6 +106,8 @@ router.delete('/book/:id', (req, res) => {
     .catch(error => res.status(400).send(`Error deleting ${error}`));
 });
 
+
+
 /* router.delete('/:name', async(req, res, next) => {
     const name = req.params.name
     try{

@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import {useState} from 'react';
 import CheckoutForm from "./Components/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
+import Success from './Success';
+
 import {
    Elements,
   
@@ -14,9 +16,11 @@ function SelectedItems({ items }) {
   
   const [flag,setFlag]=useState(false);
   const stripePromise = loadStripe("pk_test_51JdLrNA55RWoFjWF6pnCrLArW0O9N7SAVOuGDYaWdcjh3ULbmLDV8PO9cn3wIEcYkdOeqN39QQCXqDmoIKWvFG0N00MfbYn2Yw");
+  const [paymentMethod, setPaymentMethod] = useState(null);
   var total=0;
   const itemsSelected = items.filter(item => item.checked === true);
   itemsSelected.forEach(item =>total+=item.price);
+  
   const ELEMENTS_OPTIONS = {
     fonts: [
       {
@@ -42,17 +46,18 @@ function SelectedItems({ items }) {
      <Button variant="primary" type="submit" onClick={handleSubmit}>
       Checkout
     </Button> 
-    { <div>
+    
+     <div>
      {flag ? 
      <div className="AppWrapper">  
      <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-     <CheckoutForm total = {total} /> 
+     <CheckoutForm  total = {total}/>
      </Elements>
      </div>
       
      
      :null}
-   </div> }
+   </div> 
     </Form> 
     </div>
     </div>

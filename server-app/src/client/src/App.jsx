@@ -132,7 +132,7 @@ function App(props) {
             <StyledLink to="/NonFiction">NonFiction</StyledLink>
             <StyledLink to="/SelectedItems">Cart</StyledLink>
             <StyledLink to="/checkout">Payment</StyledLink>
-            
+           
           </nav>
           <Switch>
             <Route exact path="/">
@@ -147,15 +147,16 @@ function App(props) {
               <Route exact path="/profile">
               <Profile/>
               </Route>
-              <Route path="/fiction">
+              <Route exact path="/fiction">
               <ItemsList items={items} type="fiction" updateItem={updateItem} />
               </Route>
-              <Route path="/nonfiction">
+              <Route exact path="/nonfiction">
               <ItemsList items={items} type="nonfiction" updateItem={updateItem} />
               </Route>
-              <Route path="/selecteditems">
+              <Route exact path="/selecteditems">
               
               <SelectedItems items={items} />
+              
               </Route>
               <Route path="/checkout">
                 {/* <checkout/> */}
@@ -163,7 +164,9 @@ function App(props) {
               </Route> 
               <div className="AppWrapper">
             <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>  
-            <CheckoutForm items={items} />
+            
+            <CheckoutForm items= {items}/> 
+           
               </Elements>
               </div>
               </Route>      
