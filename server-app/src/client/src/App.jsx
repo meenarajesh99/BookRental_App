@@ -7,7 +7,7 @@ import Header from './Components/Header'
 import Footer from './Components/Footer';
 import Home from "./Components/Home";
 
-import { StyledLink } from "./styles";
+import { StyledLink } from "./style";
 // Source code imports
 import   "./SelectedItems";
 import Register from './Register';
@@ -19,10 +19,37 @@ import Fiction from "./Fiction";
 import NonFiction from "./Nonfiction";
 import ItemsList from "./ItemsList";
 import SelectedItems from "./SelectedItems";
+import CheckoutForm from './Components/CheckoutForm';
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  CardElement,
+  Elements,
+  useElements,
+  useStripe
+} from "@stripe/react-stripe-js";
+import "./styles.css";
+
+const stripePromise = loadStripe("pk_test_51JdLrNA55RWoFjWF6pnCrLArW0O9N7SAVOuGDYaWdcjh3ULbmLDV8PO9cn3wIEcYkdOeqN39QQCXqDmoIKWvFG0N00MfbYn2Yw");
+function setToken(userToken) {
+  sessionStorage.setItem("token", JSON.stringify(userToken));
+}
+function getToken() {
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token;
+}
 
 const TYPE_NAMES = {
-  fiction: "fiction",
-  nonfiction: "nonfiction",
+  fiction: "Fiction",
+  nonfiction: "Nonfiction",
+};
+
+const ELEMENTS_OPTIONS = {
+  fonts: [
+    {
+      cssSrc: "https://fonts.googleapis.com/css?family=Roboto"
+    }
+  ]
 };
 
 function App(props) {
@@ -83,7 +110,7 @@ function App(props) {
       });
     });
   };
-
+  
   console.log("App.state.items is ", items);
 
   // Data being retrieved from server
@@ -104,7 +131,8 @@ function App(props) {
             <StyledLink to="/Fiction">Fiction</StyledLink>
             <StyledLink to="/NonFiction">NonFiction</StyledLink>
             <StyledLink to="/SelectedItems">Cart</StyledLink>
-          
+            <StyledLink to="/checkout">Payment</StyledLink>
+            
           </nav>
           <Switch>
             <Route exact path="/">
@@ -123,15 +151,26 @@ function App(props) {
               <ItemsList items={items} type="fiction" updateItem={updateItem} />
               </Route>
               <Route path="/nonfiction">
-               <ItemsList items={items} type="nonfiction" updateItem={updateItem} />
+              <ItemsList items={items} type="nonfiction" updateItem={updateItem} />
               </Route>
               <Route path="/selecteditems">
+              
               <SelectedItems items={items} />
               </Route>
-                        
+              <Route path="/checkout">
+                <checkout/>
+                 <Route path="/payment">
+                </Route> 
+              <div className="AppWrapper">
+            <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>  
+            <CheckoutForm items={items} />
+              </Elements>
+              </div>
+              </Route>      
           </Switch>
         </Router>
         </div>
+        
     )
       
     
