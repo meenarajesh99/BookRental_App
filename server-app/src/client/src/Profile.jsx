@@ -28,9 +28,9 @@ function Profile({username}) {
         console.error("Error:", error);
       });
   }
-  useEffect(()=>{
+   useEffect(()=>{
     ProfileUser()
-  },[])
+   },[]) 
 
   async function DeleteUser() {
     return fetch(`http://localhost:9999/v1/users/${username}`, {

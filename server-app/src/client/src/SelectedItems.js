@@ -5,10 +5,8 @@ import {useState} from 'react';
 import CheckoutForm from "./Components/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import {
-  CardElement,
-  Elements,
-  useElements,
-  useStripe
+   Elements,
+  
 } from "@stripe/react-stripe-js";
 import "./styles.css";
 
@@ -44,20 +42,21 @@ function SelectedItems({ items }) {
      <Button variant="primary" type="submit" onClick={handleSubmit}>
       Checkout
     </Button> 
-    <div>
+    { <div>
      {flag ? 
      <div className="AppWrapper">  
      <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
      <CheckoutForm total = {total} /> 
      </Elements>
-      </div>
-     
+     </div>
+      
      
      :null}
-   </div>
-    </Form>   
+   </div> }
+    </Form> 
     </div>
     </div>
+    
   )
    }
  

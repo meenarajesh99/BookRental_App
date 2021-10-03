@@ -158,9 +158,9 @@ function App(props) {
               <SelectedItems items={items} />
               </Route>
               <Route path="/checkout">
-                <checkout/>
-                 <Route path="/payment">
-                </Route> 
+                {/* <checkout/> */}
+              <Route path="/payment">
+              </Route> 
               <div className="AppWrapper">
             <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>  
             <CheckoutForm items={items} />
@@ -178,3 +178,6 @@ function App(props) {
 }
 
 export default App;
+
+
+

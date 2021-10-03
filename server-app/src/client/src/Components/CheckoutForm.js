@@ -11,6 +11,7 @@ import  "./../SelectedItems";
 
 
 
+
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
@@ -166,7 +167,7 @@ const reset = () => {
     name: "",
     email: "",
     phone: "",
-    
+      
   });
 };
 return paymentMethod ? (
