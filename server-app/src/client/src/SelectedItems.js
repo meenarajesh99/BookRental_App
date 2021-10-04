@@ -16,7 +16,7 @@ function SelectedItems({ items }) {
   
   const [flag,setFlag]=useState(false);
   const stripePromise = loadStripe("pk_test_51JdLrNA55RWoFjWF6pnCrLArW0O9N7SAVOuGDYaWdcjh3ULbmLDV8PO9cn3wIEcYkdOeqN39QQCXqDmoIKWvFG0N00MfbYn2Yw");
-  const [paymentMethod, setPaymentMethod] = useState(null);
+ 
   var total=0;
   const itemsSelected = items.filter(item => item.checked === true);
   itemsSelected.forEach(item =>total+=item.price);
@@ -51,16 +51,22 @@ function SelectedItems({ items }) {
      {flag ? 
      <div className="AppWrapper">  
      <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-     <CheckoutForm  total = {total}/>
+     <CheckoutForm  total = {total.toFixed(2)} type="submit" onClick={handleSubmit}/>
+     
      </Elements>
+     
      </div>
       
      
      :null}
-   </div> 
+     </div> 
     </Form> 
+    
+    
     </div>
+    
     </div>
+    
     
   )
    }

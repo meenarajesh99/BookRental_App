@@ -28,6 +28,7 @@ import {
   useStripe
 } from "@stripe/react-stripe-js";
 import "./styles.css";
+import Success from "./Success";
 
 const stripePromise = loadStripe("pk_test_51JdLrNA55RWoFjWF6pnCrLArW0O9N7SAVOuGDYaWdcjh3ULbmLDV8PO9cn3wIEcYkdOeqN39QQCXqDmoIKWvFG0N00MfbYn2Yw");
 function setToken(userToken) {
@@ -156,16 +157,17 @@ function App(props) {
               <Route exact path="/selecteditems">
               
               <SelectedItems items={items} />
-              
+              <Success/>
               </Route>
               <Route path="/checkout">
-                {/* <checkout/> */}
+              
               <Route path="/payment">
+              
               </Route> 
               <div className="AppWrapper">
             <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>  
             
-            <CheckoutForm items= {items}/> 
+            <CheckoutForm /> 
            
               </Elements>
               </div>

@@ -230,6 +230,7 @@ return paymentMethod ? (
       <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
     <SubmitButton processing={processing} error={error} disabled={!stripe} >
+    {/* <SubmitButton processing={processing ? `payment succesful`:`not successful`} > */}
       Pay ${total}
     </SubmitButton>
     </Elements>
