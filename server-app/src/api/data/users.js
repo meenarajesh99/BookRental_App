@@ -1,4 +1,4 @@
-const { getMaxListeners } = require("../../api/models/user")
+const { getMaxListeners } = require("../models/user")
 
 const USERS = [
     

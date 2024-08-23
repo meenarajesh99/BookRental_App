@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import {useState} from 'react';
-import CheckoutForm from "./Components/CheckoutForm";
+import CheckoutForm from "./components/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import Success from './Success';
 

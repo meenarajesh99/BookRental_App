@@ -12,15 +12,14 @@ dotenv.config();
 const User = require('./api/models/user');
 const Book = require('./api/models/book');
 
-//const UserModel = require('./api/models/user')
 
 // Routes
 const routes = require('./api/routes/v1');
 
 // Miscellaneos
-const USERS = require('./test/data/users');
+const USERS = require('./api/data/users');
 
-const BOOKS = require('./test/data/books');
+const BOOKS = require('./api/data/books');
 
 var cors = require('cors');
 
@@ -35,22 +34,22 @@ const DB_URL = process.env.DB_URL;
 
 /** Connect to our MongoDB database  
  **/
-console.log(process.env.DB_URL)
+// console.log(process.env.DB_URL)
 console.log("Hello server")
-console.log(DB_URL)
- mongoose.connect(DB_URL)
-  .then(()=> console.log('Connected to MongoDB'))
+// console.log(DB_URL)
+  mongoose.connect(DB_URL)
+   .then(()=> console.log('Connected to MongoDB'))
 // Configure mongoose to tell us if we succeed or if we fail to connect to the database
-mongoose.connection.on('open', () => `MongoDB: Successfully connected to ${DB_URL}`);
-mongoose.connection.on('error', (error) => `MongoDB: Failed to connected to ${DB_URL}. Error ${error}`);
+ mongoose.connection.on('open', () => `MongoDB: Successfully connected to ${DB_URL}`);
+ mongoose.connection.on('error', (error) => `MongoDB: Failed to connected to ${DB_URL}. Error ${error}`);
 
 // IMPORTANT: If you are connecting to a database on your local machine be sure it is running first.
 // We have to do this before we can save any Models to the database or get data from database.
-console.log('MongoDB: Attempting to connect ...');
-// mongoose
+// console.log('MongoDB: Attempting to connect ...');
+//    mongoose
 //   .connect(`mongodb://localhost:27017/capstone`)
-//   // handle error messages after successfully connectiong
-//   .catch(error => console.error(`MongoDB: Error ${error}`));
+  // handle error messages after successfully connectiong
+//  .catch(error => console.error(`MongoDB: Error ${error}`));
 
 
 // Create some test data in the database for our app
@@ -64,8 +63,8 @@ USERS.forEach(item => {
     })
 });
 
-BOOKS.forEach(item => {
-  const bookModel = new Book({ name: item.name, author: item.author, type: item.type, price: item.price});
+BOOKS.forEach(book => {
+  const bookModel = new Book({ title: book.title, author: book.author, price: book.price, imageUrl: book.imageUrl, category: book.category, countInStock: book.countInStock});
  
   bookModel
     .save() 
@@ -122,9 +121,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-/* app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
-}) */
 
 
 

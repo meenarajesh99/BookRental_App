@@ -7,7 +7,7 @@ import {
   useStripe
 } from "@stripe/react-stripe-js";
 import "./../styles.css";
-import  "./../SelectedItems";
+import  "../SelectedItems";
 
 
 

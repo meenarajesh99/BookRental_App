@@ -6,7 +6,6 @@
   },
   "description": "",
   "main": "index.js",
-
   "scripts": {
     "prestart": "npm docs",
     "docs": "apidoc -i src -o docs",
@@ -26,10 +25,15 @@
     "mongoose": "^6.0.5"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "@types/express": "^4.17.13",
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
-    "apidoc": "^0.29.0"
+    "apidoc": "^0.29.0",
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.14"
   },
   "author": "",
   "license": "ISC"

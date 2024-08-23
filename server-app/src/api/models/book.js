@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
  */
 
 const bookSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     // This prevents duplicate documents w/the exact same info from being created for this model.
     unique: true,
@@ -19,12 +19,27 @@ const bookSchema = new mongoose.Schema({
       required: true,
   },
   
+  
   price: {
       type: Number,
       required: true,
 
   },
-  type: String
+
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  
+  category:{
+    type:String,
+    required: true,
+  },
+ 
+countInStock: {
+    type: 'Number',
+    required: true
+}
 });
 
 const Book = mongoose.model('Book', bookSchema);
